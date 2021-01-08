@@ -1,11 +1,11 @@
 <template>
 
 <form action="">
-    <label for="userlogin"> Votre pseudo</label>
-    <input v-model="userlogin" Type="text" name="userlogin" id="userlogin">
+    <label for="pseudo"> Votre pseudo</label>
+    <input v-model="pseudo" Type="text" name="pseudo" id="pseudo">
     <br>
-    <label for="userpassword"> Votre Mot de passe</label>
-    <input v-model="userpassword" type="text" name="userpassword" id="userpassword">
+    <label for="password"> Votre Mot de passe</label>
+    <input v-model="password" type="text" name="password" id="password">
     <br>
     <button v-on:click="submit">Se connecter</button>
 </form>
@@ -15,16 +15,16 @@
 export default {
   data: () => {
     return {
-      userlogin:null,
-      userpassword:null
+      pseudo:null,
+      password:null
     }  
   },
   methods: {
     submit(ev) {
       ev.preventDefault();
     let formParams = new URLSearchParams();
-    formParams.append("userlogin",this.userlogin);
-    formParams.append("userpassword",this.userpassword);
+    formParams.append("pseudo",this.pseudo);
+    formParams.append("password",this.password);
 
     const requestOptions = {
       method: "POST",
@@ -35,8 +35,22 @@ export default {
     }
     fetch('http://www.poneyback.local/login.php', requestOptions)
       .then(response => response.json())
-      .then(data =>(alert(data)));
-    }  
+      .then(data =>(alert(data)))
+      .then(this.$router.push({ name: 'Profile' }))
+
+      /*.then(response =>  {
+        if(response.data.error){
+          console.log("Error",response.data);
+
+        }else {
+          console.log("Success",response.data);
+          this.$router.push("/profile");
+        }
+      })
+      .catch(err=>{
+        console.log("Error",err);
+      })*/
+    }
   }
 };
 </script>

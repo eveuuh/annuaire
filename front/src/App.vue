@@ -1,19 +1,13 @@
 <template>
-  <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-      <router-link to="/login">Login</router-link>
-      <router-link to="/profile">Mon Profil</router-link>
-      <router-link to="/membres">Membres</router-link>
-      <router-link to="/stats">Stats</router-link>
+  <div id="app">
+   
       <router-view/>
    </div>
 </template>
 
 <script>
 export default {
-  name: 'app',
-  
+  name: 'app', 
 }
 </script>
 

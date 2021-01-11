@@ -88,8 +88,8 @@ export default {
       NumberAdherent : null,
       password2 : null,
       DateAdhesion : null,
-      image: require('@/assets/poney.png')
-
+      image: require('@/assets/poney.png'),
+      connected:false
 
     }  
    
@@ -108,7 +108,7 @@ export default {
       },
       body: formParams
     }
-    fetch('http://www.poneyback.local/login.php', requestOptions)
+    fetch('http://www.poneyback.localhost/login.php', requestOptions)
       .then(response => response.json())
       .then(data =>(alert(data)))
       .then(this.$router.push({ name: 'Profile' }))
@@ -148,13 +148,15 @@ export default {
         },
         body: formParams
       }
-      fetch('http://www.poneyback.local/register.php', requestOptions)
+      fetch('http://www.poneyback.localhost/register.php', requestOptions)
         .then(response => response.json())
         .then(data =>(console.log(data)))
        // .then(this.$router.push({ name: 'Profile' }))
 
     }
   }
+
+  
 }
 </script>
 

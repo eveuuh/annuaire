@@ -106,12 +106,15 @@ export default {
       headers: { 
         'Content-Type' : 'application/x-www-form-urlencoded'
       },
-      body: formParams
+      body: formParams, 
+      credentials:'include'
+
     }
-    fetch('http://www.poneyback.localhost/login.php', requestOptions)
+    fetch('http://www.back.poney.local/login.php', requestOptions)
       .then(response => response.json())
       .then(data =>(alert(data)))
       .then(this.$router.push({ name: 'Profile' }))
+
       /*.then(response =>  {
         if(response.data.error){
           console.log("Error",response.data);
@@ -144,11 +147,11 @@ export default {
       const requestOptions = {
         method: "POST",
         headers: { 
-          'Content-Type' : 'application/x-www-form-urlencoded'
+          'Content-Type' : 'multipart/form-data'
         },
         body: formParams
       }
-      fetch('http://www.poneyback.localhost/register.php', requestOptions)
+      fetch('http://www.back.poney.local/register.php', requestOptions)
         .then(response => response.json())
         .then(data =>(console.log(data)))
        // .then(this.$router.push({ name: 'Profile' }))

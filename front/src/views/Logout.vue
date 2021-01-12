@@ -1,39 +1,27 @@
 <template>
-  <div class="content">
-    <Nav></Nav>
-    <div class="profilecard">
-      <h1>Bienvenue {{pseudo}} </h1>
-      <Avatar :pseudo="pseudo">{{pseudo}}</Avatar>
-
-    </div>
+  <div class="container">
+  
   </div>
   
 </template>
-
 <script>
-import Avatar from '@/components/Avatar.vue'
-import Nav from '@/components/Nav.vue'
 
 export default {
-  name: 'Profile',
-  components : {
-    Avatar,
-    Nav
-  },
+
+  name: 'Logout',
   data: () => {
     return {
       connected:true,
-      pseudo:"pseudo", 
+      pseudo:"toto", 
       password:null
     }
   }, 
-    mounted: function () {
+  mounted: function () {
         fetch('http://www.back.poney.local/connected.php', {credentials:'include'})
 
             .then(response => response.json())
             .then((data) => {this.connected = data.connected; this.pseudo = data.pseudo});
       },   
-
   methods:{
     disconnect(ev) {
             ev.preventDefault(); 
@@ -46,33 +34,4 @@ export default {
   }
 }            
 };         
-
 </script>
-
-<style scoped>
-body {
-  height:100vh
-}
-
-h1 {
-  color:white;
-  margin-left:22px
-}
-
-
-.profilecard{
-  border:1px solid white;
-  height:100vh;
-  width: 800px;
-  margin-left:auto;
-  margin-right:auto;  
-}
-
-.avatar{
-  margin-left:22px;
-}
-
-</style>
-
-//multi parse /data dans le header de la requete fetch de form 
-

@@ -1,6 +1,6 @@
 module.exports = {
     devServer: {
-        proxy: 'http://poneyback.local',
+        host: 'www.poney.local',
     }
 }
 

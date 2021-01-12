@@ -2,6 +2,7 @@
   <div id="nav">
     
     <Nav></Nav> 
+    a propos
   </div>
 
 
@@ -10,7 +11,6 @@
 
 <script>
 import Nav from '@/components/Nav.vue'
-import Avatar from '@/components/Avatar.vue'
 
 export default {
 

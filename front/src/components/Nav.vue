@@ -4,9 +4,17 @@
       <li> <router-link to="/">Poney Fringants</router-link> </li>
       <li> <router-link to="/about">About</router-link></li>
       <li> <router-link to="/membres">Membres</router-link></li>
-      <li> <router-link to="/stats">Stats</router-link></li>      
+      <li> <router-link to="/stats">Stats</router-link></li>   
+      <li class="dp" > <router-link to="/profile">Profil</router-link></li>
+      <li class="dp" > <router-link to="/logout">Se Deconnecter</router-link></li>  
     </ul> 
-     <router-link to="/profile">Mon Profil</router-link>
+    <div class="dropdown">
+      <button v-on:click="myFunction()" class="dropbtn">Mon espace</button>
+        <div id="myDropdown" class="dropdown-content">
+          <router-link to="/profile">Mon Profil</router-link>
+          <router-link to="/logout">Se Deconnecter</router-link>
+         </div>
+    </div>
    
     <div v-on:click="openMobileNav()" id="burger">
       <div class="line1"></div>
@@ -41,16 +49,45 @@ export default {
           link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7}s`
         }
       })
-  }, 
-}
-}
+    },
+    myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+      window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            let dropdowns = document.getElementsByClassName("dropdown-content");
+            let i;
+            for (i = 0; i < dropdowns.length; i++) {
+              let openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+        }
+      }
+      }
+    },
+    disconnect(ev) {
+            ev.preventDefault(); 
+            fetch('http://www.back.poney.local/disconnect.php', {credentials:'include'})     
+            .then(this.$router.push({ name: 'Home' }))
+            this.pseudo = null; 
+            this.password = null; 
+            this.connected = false; 
+
+  }
+
+  }
+};
 </script>
 
 <style lang="scss">
-  a{
+  a { 
    text-decoration:none;
    color:white;
- }
+  }
+
+  .dp {
+    display:none;
+  }
   #nav {  
     display: flex;
     justify-content: space-around;
@@ -60,6 +97,7 @@ export default {
     position: fixed;
     width: 100%;
     top: 0;
+    left: 0;
   }
   ul.nav-links {
     display: flex;
@@ -75,18 +113,11 @@ export default {
   ul.nav-links a {
     text-decoration: none;
     color: #fefefe;
-    font-size: 1.2rem;
+    font-size: 14px;
     font-weight: 500;
     display: block;
   }
-  li{
-    color:red;
-    text-decoration: none;
-    list-style: none;
-    display:flex;
-    text-align: right;
-
-  }
+  
   #burger {
     display: none;
     cursor: pointer;
@@ -98,6 +129,23 @@ export default {
     background-color: #fefefe;
     transition: all 0.3s ease-in;
   }
+
+  ul.dropdown-menu li:first-child {
+    margin: 0 0 10px 0;
+  }
+  ul.dropdown-menu li {
+    margin: 10px 0;
+  }
+  ul.dropdown-menu li:last-child {
+    margin: 10px 0 0 0;
+  }
+  ul.dropdown-menu a {
+    line-height: 8vh;
+    padding: 5px 15px;
+    background-color: #7c3434;
+    line-height: 50px;
+  }
+
   @media screen and (max-width: 768px) {
     ul.nav-links {
       position: absolute;
@@ -127,6 +175,12 @@ export default {
       position: relative;
       top: 0;
     }
+    .dropbtn{
+      display:none;
+    }
+    .dp {
+      display:flex;
+    }
   }
   .nav-active {
     transform: translateX(0) !important;
@@ -150,4 +204,65 @@ export default {
   .toggle .line3 {
     transform: rotate(45deg) translate(-5px, -6px);
   }
+
+.dropbtn {
+  background-color: #4da596de;
+  border-radius:10px;
+  color: white;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow:1px 1px rgb(143, 136, 136);
+  border: none;
+  cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #0bc08a;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content .button-close{
+   display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.button-close{
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}  
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: rgb(161, 204, 195)}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}  
 </style>

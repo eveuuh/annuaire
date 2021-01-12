@@ -1,8 +1,7 @@
 <template>
   <div id="app">
-   
-      <router-view/>
-   </div>
+    <router-view/>
+  </div>
 </template>
 
 <script>
@@ -22,8 +21,8 @@ export default {
     color: #222;
     background: linear-gradient(to bottom, #1C8A82, #147871);
     height: 100vh;
-    display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 100px;
   }
 </style>

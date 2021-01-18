@@ -14,6 +14,7 @@ export default {
   body {
     margin: 0;
     padding: 0;
+    height:100vh;
   }
   #app {
     font-family: Tahoma;
@@ -23,6 +24,5 @@ export default {
     height: 100vh;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
   }
 </style>

@@ -3,8 +3,9 @@
     <Nav></Nav>
     <div class="profilecard">
       <h1>Bienvenue {{pseudo}} </h1>
-      <Avatar :pseudo="pseudo">{{pseudo}}</Avatar>
-
+      <Avatar :pseudo="pseudo">{{photo}}</Avatar>
+        <input type="file" id="photo" ref="photo" name="photo" v-on:change="handleFileUpload()"/>
+        <button v-on:click="submitFile()">Envoyer</button>
     </div>
   </div>
   
@@ -23,40 +24,64 @@ export default {
   data: () => {
     return {
       connected:true,
-      pseudo:"pseudo", 
-      password:null
+      pseudo:"toto", 
+      password:null,
+      photo:null,
+      
     }
   }, 
     mounted: function () {
-        fetch('http://www.back.poney.local/connected.php', {credentials:'include'})
-
+      fetch('http://www.back.poney.local/connected.php', {credentials:'include'})
             .then(response => response.json())
-            .then((data) => {this.connected = data.connected; this.pseudo = data.pseudo});
+            .then((data) => {this.connected = data.connected; this.pseudo = data.pseudo; this.photo=data.photo});
       },   
 
   methods:{
     disconnect(ev) {
-            ev.preventDefault(); 
-            fetch('http://www.back.poney.local/disconnect.php', {credentials:'include'})     
-            .then(this.$router.push({ name: 'Home' }))
-            this.pseudo = null; 
-            this.password = null; 
-            this.connected = false; 
+      ev.preventDefault(); 
+      fetch('http://www.back.poney.local/disconnect.php', {credentials:'include'})     
+      .then(this.$router.push({ name: 'Home' }))
+      this.pseudo = null; 
+      this.password = null; 
+      this.connected = false; 
 
+    },
+    submitFile(){
+      //ev.preventDefault();
+      const files = this.$refs.photo.files[0];
+        let formParams = new FormData();
+        formParams.append("photo",files);
+        console.log(formParams);
+
+        const requestOptions = {
+          method: "POST",
+          body: formParams, 
+          credentials:'include'
+        } 
+        fetch('http://www.back.poney.local/upload.php',requestOptions)     
+            .then(response => response.json())
+            .then((data) => {this.photo = data.photo});
+    },
+    handleFileUpload(){
+      this.photo = this.$refs.photo.files[0];
+    }             
   }
-}            
 };         
 
 </script>
 
 <style scoped>
 body {
-  height:100vh
+  height:100vh;
+  margin-top:10px;
+  background: linear-gradient(to bottom, #1a725a, #327b83);  
+
 }
 
 h1 {
   color:white;
-  margin-left:22px
+  margin-left:22px;
+  margin-top:110px;
 }
 
 
@@ -74,5 +99,4 @@ h1 {
 
 </style>
 
-//multi parse /data dans le header de la requete fetch de form 
 

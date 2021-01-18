@@ -1,6 +1,7 @@
 <template>
   <article>
-    <div class="container" :class="{'sign-up-active' : signUp}">
+    <div class="mainform" :class="{'sign-up-active' : signUp}">
+      
       <div class="overlay-container">
         <div class="overlay">
           <div class="overlay-left">
@@ -50,9 +51,9 @@
             
              <label for="DateAdhesion">Date d'adhésion</label>
                 <input v-model="DateAdhesion" type="datetime" name="DateAdhesion" id="DateAdhesion">
-           
+
             <button v-on:click="register">S'enregistrer</button>
-        </form>
+    </form>
 
     <form class="sign-in" action="">
         <h2>Connectez vous</h2>
@@ -64,6 +65,7 @@
         <br>
         <button v-on:click="submit">Se connecter</button>
     </form>
+
     </div>
   </article>
 </template>
@@ -147,7 +149,7 @@ export default {
       const requestOptions = {
         method: "POST",
         headers: { 
-          'Content-Type' : 'multipart/form-data'
+          'Content-Type' : 'application/x-www-form-urlencoded'
         },
         body: formParams
       }
@@ -167,20 +169,29 @@ export default {
 
 * {
   font-family: 'Roboto', sans-serif;
-
+  
 }
 
-
-  .container {
+img {
+  width:2OOpx;
+  height:200px;
+}
+label{
+  font-size: 12px;
+}
+.mainform {
     position: relative;
     width: 768px;
-    height: 680px;
+    height: 600px;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 15px 30px rgba(0, 0, 0, .2),
                 0 10px 10px rgba(0, 0, 0, .2);
     background: linear-gradient(to bottom, #efefef, #ccc);
-    .overlay-container {
+    margin-left: auto;
+    margin-right: auto;
+}  
+.overlay-container {
       position: absolute;
       top: 0;
       left: 50%;
@@ -189,8 +200,8 @@ export default {
       overflow: hidden;
       transition: transform .5s ease-in-out;
       z-index: 100;
-    }
-    .overlay {
+}
+.overlay {
       position: relative;
       left: -100%;
       height: 100%;
@@ -221,48 +232,45 @@ export default {
       @include overlays(0);
       right: 0;
     }
-  }
-  h2 {
-    margin-top: 10px;
-    font-family: 'Roboto', sans-serif;
-
-  }
-  p {
-    margin: 20px 0 30px;
-   
-    font-family: 'Roboto', sans-serif;
   
-  }
-  a {
-    color: #222;
-    text-decoration: none;
-    margin: 15px 0;
-    font-size: 1rem;
-  }
-  button {
-    border-radius: 20px;
-    border: 1px solid #00A28F;
-    background-color: #00A28F;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: bold;
-    padding: 10px 40px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: transform .1s ease-in;
+h2 {
+  margin-top: 10px;
+  font-family: 'Roboto', sans-serif;
+}
+p {
+  margin: 20px 0 30px;
+  font-family: 'Roboto', sans-serif;
+}
+a {
+  color: #222;
+  text-decoration: none;
+  margin: 15px 0;
+  font-size: 1rem;
+}
+button {
+  border-radius: 20px;
+  border: 1px solid #00A28F;
+  background-color: #00A28F;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 40px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform .1s ease-in;
     &:active {
       transform: scale(.9);
     }
     &:focus {
       outline: none;
     }
-  }
-  button.invert {
-    background-color: transparent;
-    border-color: #fff;
-  }
-  form {
+}
+button.invert {
+  background-color: transparent;
+  border-color: #fff;
+}
+form {
     position: absolute;
     top: 0;
     display: flex;
@@ -277,7 +285,7 @@ export default {
       transition: all .5s ease-in-out;
     div {
       font-size: 1rem;
-    }
+}
     input {
       background-color: #eee;
       border: none;

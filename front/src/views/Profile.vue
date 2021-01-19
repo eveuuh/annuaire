@@ -27,13 +27,14 @@ export default {
       pseudo:"toto", 
       password:null,
       photo:null,
+      id:1
       
     }
   }, 
     mounted: function () {
       fetch('http://www.back.poney.local/connected.php', {credentials:'include'})
             .then(response => response.json())
-            .then((data) => {this.connected = data.connected; this.pseudo = data.pseudo; this.photo=data.photo});
+            .then((data) => {this.connected = data.connected; this.pseudo = data.pseudo; this.photo=data.photo; this.id=data.id});
       },   
 
   methods:{
@@ -51,6 +52,8 @@ export default {
       const files = this.$refs.photo.files[0];
         let formParams = new FormData();
         formParams.append("photo",files);
+        formParams.append("id",1);
+
         console.log(formParams);
 
         const requestOptions = {
@@ -60,7 +63,7 @@ export default {
         } 
         fetch('http://www.back.poney.local/upload.php',requestOptions)     
             .then(response => response.json())
-            .then((data) => {this.photo = data.photo});
+            .then((data) => { console.log(data);this.photo = data.photo});
     },
     handleFileUpload(){
       this.photo = this.$refs.photo.files[0];

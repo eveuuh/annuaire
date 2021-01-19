@@ -1,10 +1,11 @@
 <template>
   <div id="membres">
     <Nav></Nav>
-    <div v-for="adherents, id in adherents" v-bind ="id">
+    <div class="members">
     <h1>Voici les membres</h1>
-    <p :pseudo="pseudo">{{pseudo}}</p>
-    <p>{{adherent.pseudo}}</p>
+      <ul>
+        <li v-for="adherent in adherents" >{{adherent.Prenom}}  {{adherent.Pseudo}} {{adherent.DateAdhesion}} {{adherent.photo}}</li>
+      </ul>
     </div>
   </div>
 </template>
@@ -25,7 +26,15 @@ export default {
       password:null,
       photo:null,
       prenom:"toto",
-      adherents: []
+      adherents: [
+        { id:""},
+        {prenom:""},
+        {pseudo:""}
+      ],
+      profils: [
+        { photo:""},
+        
+      ]
     }
   }, 
  
@@ -34,15 +43,15 @@ export default {
             .then(response => response.json())
             .then((data) => {this.connected = data.connected;this.prenom=data.prenom; this.pseudo = data.pseudo; this.photo=data.photo});
     
-       const requestOptions = {
+      const requestOptions = {
           method: "GET",
           credentials:'include'
-        } 
+      } 
       fetch('http://www.back.poney.local/members.php', {credentials:'include'})
        .then(response => response.json())
-        .then(data =>(console.log(data)))
-      },
-    
+        .then(data =>(this.adherents=data))
+        
+      }
 };
 </script>
 <style>
@@ -60,7 +69,8 @@ export default {
   h1{
     color:white;
   }
-  p{
-    color:white
+  li{
+    color:white;
+    list-style-type:none;
   }
 </style>

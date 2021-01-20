@@ -190,6 +190,7 @@ label{
     background: linear-gradient(to bottom, #efefef, #ccc);
     margin-left: auto;
     margin-right: auto;
+    
 }  
 .overlay-container {
       position: absolute;

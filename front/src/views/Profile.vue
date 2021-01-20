@@ -2,10 +2,15 @@
   <div class="content">
     <Nav></Nav>
     <div class="profilecard">
-      <h1>Bienvenue {{pseudo}} </h1>
-      <Avatar :pseudo="pseudo">{{photo}}</Avatar>
-        <input type="file" id="photo" ref="photo" name="photo" v-on:change="handleFileUpload()"/>
-        <button v-on:click="submitFile()">Envoyer</button>
+      <div class="info">
+        <h1>Bienvenue {{pseudo}} </h1>
+        <Avatar :pseudo="pseudo">{{photo}}</Avatar>
+          <input type="file" id="photo" ref="photo" name="photo" v-on:change="handleFileUpload()"/>
+          <button v-on:click="submitFile()">Envoyer</button>
+      </div> 
+      <div class="interest">
+        <p> mes interets</p>
+      </div>  
     </div>
   </div>
   
@@ -53,6 +58,7 @@ export default {
         let formParams = new FormData();
         formParams.append("photo",files);
         formParams.append("id",1);
+        console.log('ID BEFORE POST',  this.id);
 
         console.log(formParams);
 
@@ -83,17 +89,23 @@ body {
 
 h1 {
   color:white;
-  margin-left:22px;
-  margin-top:110px;
+  margin-top:10px;
 }
 
 
 .profilecard{
-  border:1px solid white;
-  height:100vh;
+  height:100%;
   width: 800px;
   margin-left:auto;
   margin-right:auto;  
+  background: linear-gradient(to bottom, #1a725a, #327b83);  
+  margin-top:111px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, .2),
+                0 10px 10px rgba(0, 0, 0, .2);
+  padding:30px;
+  display:flex;
+  justify-content:space-between        
+
 }
 
 .avatar{

@@ -2,10 +2,10 @@
   <div id="membres">
     <Nav></Nav>
     <div class="members">
-    <h1>Voici les membres</h1>
-      <ul>
-        <li v-for="adherent in adherents" >{{adherent.Prenom}}  {{adherent.Pseudo}} {{adherent.DateAdhesion}} {{adherent.photo}}</li>
-      </ul>
+      <h1>Voici les membres</h1>
+        <ul>
+          <li v-for="adherent in adherents" >{{adherent.Prenom}}  {{adherent.Pseudo}} {{adherent.DateAdhesion}} {{adherent.Photo}}</li>
+        </ul>
     </div>
   </div>
 </template>

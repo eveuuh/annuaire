@@ -2,7 +2,7 @@
   <div id="nav">
     
     <Nav></Nav> 
-    a propos
+ <p>Slgd</p>
   </div>
 
 
@@ -21,3 +21,11 @@ export default {
 
 }
 </script>
+<style>
+
+
+  p{
+    color:white;
+  }
+ 
+</style>

@@ -1,8 +1,7 @@
 <?php
 
 
-header ('Access-Control-Allow-Origin: http://localhost:8082');
-header ('Content-Type: application/json');
+include ("header.php");
 require_once("config.php");
 
 
@@ -21,10 +20,9 @@ require_once("config.php");
     $dateadhesion = $_POST['DateAdhesion'];
  
 //TODO verif format n°adh//
-//TODO hash mdp//
-//
-    // Création d'une requête SQL (plus exactement, d'un requête paramétrée)
-    $rqt = "INSERT INTO Adherents (prenom, nom, pseudo, email, numero, addresse, codepostal, ville, numeroadherent,password, dateadhesion) 
+    $hash = password_hash($password, PASSWORD_DEFAULT); 
+// Création d'une requête SQL (plus exactement, d'un requête paramétrée)
+    $rqt = "INSERT INTO Adherents (Prenom, Nom, Pseudo, email, Numero, Addresse, CodePostal, Ville, NumeroAdherent,Password,  DateAdhesion) 
                 VALUES (:prenom, :nom, :pseudo, :email, :numero , :addresse, :codepostal, :ville, :numeroadherent, :password, :dateadhesion )";
     
     //On prépare notre requête et on l'exécute
@@ -39,7 +37,7 @@ require_once("config.php");
         $statement->bindParam(':codepostal', $codepostal);
         $statement->bindParam(':ville', $ville);
         $statement->bindParam(':numeroadherent', $numeroadherent);
-        $statement->bindParam(':password', $password);
+        $statement->bindParam(':password', $hash);
         $statement->bindParam(':dateadhesion', $dateadhesion);
         $statement->execute();
 

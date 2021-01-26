@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
 /dist
-
+poney.sql
+config.php
 
 # local env files
 .env.local

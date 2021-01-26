@@ -3,8 +3,8 @@
     <Nav></Nav>
     <div class="profilecard">
       <div class="info">
-        <h1>Bienvenue {{pseudo}} </h1>
-        <Avatar :pseudo="pseudo">{{photo}}</Avatar>
+        <h1  >Bienvenue {{pseudo}}  </h1>
+        <Avatar >{{photo}}</Avatar>
           <input type="file" id="photo" ref="photo" name="photo" v-on:change="handleFileUpload()"/>
           <button v-on:click="submitFile()">Envoyer</button>
       </div> 
@@ -32,7 +32,13 @@ export default {
       pseudo:"toto", 
       password:null,
       photo:null,
-      id:1
+      id:"",
+      adherents: [
+        { id:""},
+        {prenom:""},
+        {pseudo:""}
+      ],
+
       
     }
   }, 

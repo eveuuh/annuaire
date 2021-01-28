@@ -3,8 +3,8 @@
     <Nav></Nav>
     <div class="profilecard">
       <div class="info">
-        <h1  >Bienvenue {{pseudo}}  </h1>
-        <Avatar >{{photo}}</Avatar>
+        <h1>Bienvenue {{pseudo}}  </h1>
+        <Avatar :pseudo="pseudo">{{photo}}</Avatar>
           <input type="file" id="photo" ref="photo" name="photo" v-on:change="handleFileUpload()"/>
           <button v-on:click="submitFile()">Envoyer</button>
       </div> 
@@ -64,9 +64,7 @@ export default {
         let formParams = new FormData();
         formParams.append("photo",files);
         formParams.append("id",1);
-        console.log('ID BEFORE POST',  this.id);
 
-        console.log(formParams);
 
         const requestOptions = {
           method: "POST",

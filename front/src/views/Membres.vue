@@ -3,8 +3,18 @@
     <Nav></Nav>
     <div class="members">
       <h1>Voici les membres</h1>
+      <Member v-for="(adherent, id) in adherents"
+       :pseudo="adherent.pseudo"
+       :prenom="adherent.prenom"
+       :dateadhesion="adherent.DateAdhesion"
+       :key="id"
+       />
+        <Member/>
+          <Member/>
+            <Member/>
+
         <ul>
-          <li v-for="adherent in adherents" > {{adherent.Prenom}}  {{adherent.Pseudo}} {{adherent.DateAdhesion}} <img src="{{adherent.Photo}}"></li>
+          <li v-for="adherent in adherents" > {{adherent.Prenom}}  {{adherent.Pseudo}} {{adherent.DateAdhesion}} ></li>
         </ul>
     </div>
   </div>
@@ -12,24 +22,25 @@
 <script>
 // @ is an alias to /src
 import Nav from '@/components/Nav.vue'
+import Member from '@/components/Member.vue'
 
 export default {
   
   name: 'Membres',
    components: {
     Nav,
+    Member,
   },
   data: () => {
     return {
       connected:true,
-      pseudo:"toto", 
       password:null,
       photo:null,
-      prenom:"toto",
       adherents: [
-        { id:""},
+        {id:""},
         {prenom:""},
-        {pseudo:""}
+        {pseudo:""},
+        {dateadhesion:""}
       ],
       profils: [
         { photo:""},

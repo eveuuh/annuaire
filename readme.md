@@ -21,6 +21,7 @@
     -[]dropdown de selection d'interets
     -[] UX page profil
     - [] upload photo de profil max 1Mo 
+    - TODO: quand on change dimage erreur SRC 404 durant la MAJ
 #Membres:
     -[] list all members from sql
     -[] cards /members: avatar , pseudo, prénom, countdown registered

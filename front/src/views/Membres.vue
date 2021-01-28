@@ -7,10 +7,10 @@
        :pseudo="adherent.Pseudo"
        :prenom="adherent.Prenom"
        :dateadhesion="adherent.DateAdhesion"
+       :img="adherent.Photo"
        :id="adherent.id"
        :key="id"
        />
-      
     </div>
   </div>
 </template>
@@ -36,6 +36,7 @@ export default {
         {prenom:""},
         {pseudo:""},
         {dateadhesion:""}
+      
       ],
       profils: [
         { photo:""},

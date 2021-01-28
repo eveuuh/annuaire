@@ -39,14 +39,13 @@ if(isset($_FILES['photo']['name']))
                 $statement->bindParam(':id', $_SESSION['id']);
                 $statement->execute();
 
-                echo json_encode('{"statut": "ok","description":Photo bien enregistrée"  }');
+                echo json_encode(["statut" => "ok","description"=>"Photo bien enregistrée", "photo"=>"$photo"]);
                 exit;
             } catch(Exception $exception) {
                 // echo $exception->getMessage();
-                echo json_encode('{
-                    "statut": "error",
-                    "description": "'.$exception->getMessage().'"
-                }');
+                echo json_encode(["statut" => "erreur","description"=>"'.$exception->getMessage().'"]);
+
+              
                 exit;
             } 
         }

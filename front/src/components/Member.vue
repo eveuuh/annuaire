@@ -3,7 +3,8 @@
         <h2>{{pseudo}}</h2>
         <h3>{{prenom}}</h3>
         <p>{{dateadhesion}}</p>
-        <Avatar class= "pp" :pseudo="pseudo">{{photo}}</Avatar>
+        <Avatar class= "pp" :pseudo="pseudo" :img="img" ></Avatar>
+        
     </div>   
 </template>
 
@@ -20,7 +21,7 @@ export default {
     pseudo: { type: String, default: 'Pseudo'},
     prenom: { type: String, default: 'Prenom'},
     dateadhesion: { type: String, default: ''},
-
+    img: {type: String, default:'test'}
 
   }
 }  

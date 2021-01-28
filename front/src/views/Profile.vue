@@ -1,10 +1,12 @@
 <template>
+
   <div class="content">
     <Nav></Nav>
     <div class="profilecard">
       <div class="info">
-        <h1>Bienvenue {{pseudo}}  </h1>
-        <Avatar :pseudo="pseudo">{{photo}}</Avatar>
+        <h1>Bienvenue {{pseudo}}</h1>
+
+        <Avatar :pseudo="pseudo" :img="photo" ></Avatar>      
           <input type="file" id="photo" ref="photo" name="photo" v-on:change="handleFileUpload()"/>
           <button v-on:click="submitFile()">Envoyer</button>
       </div> 
@@ -26,28 +28,35 @@ export default {
     Avatar,
     Nav
   },
+  
   data: () => {
     return {
       connected:true,
       pseudo:"toto", 
       password:null,
-      photo:null,
       id:"",
+      photo:null,
       adherents: [
-        { id:""},
+        {id:""},
         {prenom:""},
         {pseudo:""}
-      ],
-
+      ]
       
     }
   }, 
     mounted: function () {
       fetch('http://www.back.poney.local/connected.php', {credentials:'include'})
             .then(response => response.json())
-            .then((data) => {this.connected = data.connected; this.pseudo = data.pseudo; this.photo=data.photo; this.id=data.id});
+            .then((data) => {
+            this.connected = data.connected;
+            this.pseudo = data.pseudo;
+            this.photo= data.photo;
+            console.log("test",JSON.parse(JSON.stringify(data)));
+            this.id=data.id
+            }
+          );
       },   
-
+      
   methods:{
     disconnect(ev) {
       ev.preventDefault(); 
@@ -73,7 +82,7 @@ export default {
         } 
         fetch('http://www.back.poney.local/upload.php',requestOptions)     
             .then(response => response.json())
-            .then((data) => { console.log(data);this.photo = data.photo});
+            .then((data) => { console.log("test2",data);this.photo = data.photo});
     },
     handleFileUpload(){
       this.photo = this.$refs.photo.files[0];

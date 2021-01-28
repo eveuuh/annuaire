@@ -4,18 +4,13 @@
     <div class="members">
       <h1>Voici les membres</h1>
       <Member v-for="(adherent, id) in adherents"
-       :pseudo="adherent.pseudo"
-       :prenom="adherent.prenom"
+       :pseudo="adherent.Pseudo"
+       :prenom="adherent.Prenom"
        :dateadhesion="adherent.DateAdhesion"
+       :id="adherent.id"
        :key="id"
        />
-        <Member/>
-          <Member/>
-            <Member/>
-
-        <ul>
-          <li v-for="adherent in adherents" > {{adherent.Prenom}}  {{adherent.Pseudo}} {{adherent.DateAdhesion}} ></li>
-        </ul>
+      
     </div>
   </div>
 </template>
@@ -52,7 +47,7 @@ export default {
     mounted: function () {
       fetch('http://www.back.poney.local/connected.php', {credentials:'include'})
             .then(response => response.json())
-            .then((data) => {this.connected = data.connected;this.prenom=data.prenom; this.pseudo = data.pseudo; this.photo=data.photo});
+            .then((data) => {this.connected = data.connected;this.prenom=data.prenom; this.pseudo = data.pseudo; this.photo=data.photo; this.dateadhesion=data.dateadhesion});
     
       const requestOptions = {
           method: "GET",

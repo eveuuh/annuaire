@@ -2,7 +2,7 @@
     <div class="card">
         <h2>{{pseudo}}</h2>
         <h3>{{prenom}}</h3>
-        <p>{{DateAdhesion}}</p>
+        <p>{{dateadhesion}}</p>
         <Avatar class= "pp" :pseudo="pseudo">{{photo}}</Avatar>
     </div>   
 </template>
@@ -19,7 +19,7 @@ export default {
   props: {
     pseudo: { type: String, default: 'Pseudo'},
     prenom: { type: String, default: 'Prenom'},
-    DateAdhesion: { type: String, default: 'undefined'},
+    dateadhesion: { type: String, default: ''},
 
 
   }
@@ -30,8 +30,8 @@ export default {
 
 .card{
     position:relative;
-    box-shadow: 5px 0 25px rgb(112, 105, 105);
-    background-color:white ;
+    box-shadow: 1px 0 5px rgb(250, 249, 249);
+    background-color:transparent ;
     width:300px;
     height:100px;
     display:inline-block;
@@ -40,14 +40,19 @@ export default {
 }
  
 .card > * {
-    position :absolute
+    position :absolute;
+    font-family: Tahoma
 }
 
 h2{
     top:8px;
     left:85px;
     height:8px;
-    width:8px
+    width:8px;
+    font-family: Tahoma
+
+
+
 }
 
 h3{
@@ -56,11 +61,13 @@ h3{
     height:8px;
     width:calc(100%- 98px);
     font-size:0.8em;
-    color: black
+    color: black;
+    font-family: Tahoma
+
 }
 
 p{
-    top:50px;
+    top:55px;
     left:85px;
     height:8px;
     width:calc(100%- 98px);
@@ -73,5 +80,12 @@ p{
     height:8px;
     width:8px
 }
+
+
+.card:hover {
+   background-color:#a1ccc3;
+}
+
+
 
 </style>

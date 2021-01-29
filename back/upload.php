@@ -21,13 +21,13 @@ if(isset($_FILES['photo']['name']))
         {
             $message = 'Image uploadée';
             $photo = $upload_path;
-            $rqt= 'SELECT * FROM Profils WHERE id=:id';
+            $rqt= 'SELECT * FROM Profils WHERE AdherentID=:id';
             $statement = $connexion->prepare($rqt);
             $statement->bindParam(':id',$userId);
             $statement->execute();
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-           
-            if(count($result)>1){
+            echo (count($result));
+            if(count($result)>=1){
                 $rqt= 'UPDATE Profils set photo=:photo WHERE AdherentID=:id';
             }
             else {

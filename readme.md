@@ -47,4 +47,8 @@
 - [X] Fichier Readme pour voir l'évolution du travail   
 - [] Finir wireframe/maquette pour le rendu
 - Verif html css au validator
-- 
+
+
+en cours bug:
+photo profil partie profil
+fetch membre +display

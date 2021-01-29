@@ -1,7 +1,6 @@
 <?php
 
 include("config.php");
-include('users.php'); 
 include ("header.php");
 
 $result = [];

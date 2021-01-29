@@ -4,8 +4,10 @@
     <div class="members">
       <h1>Voici les membres</h1>
         <div class="searching">
-          <input type="search" class="search" placeholder="Chercher par Nom ou Pseudo">
+          <input type="text" class="search" v-model="search" placeholder="Chercher par Nom ou Pseudo">
+          <button v-on:click="search">Rechercher</button>
         </div>
+        
       <Member v-for="(adherent, id) in adherents"
        :pseudo="adherent.Pseudo"
        :prenom="adherent.Prenom"
@@ -34,6 +36,7 @@ export default {
       connected:true,
       password:null,
       photo:null,
+      search:[],
       adherents: [
         {id:""},
         {prenom:""},
@@ -61,8 +64,24 @@ export default {
        .then(response => response.json())
         .then(data =>{console.log(data),this.adherents=data})
         
-      }
-};
+      },
+    
+    methods:{
+      search() {
+      let formParams = new URLSearchParams();
+      formParams.append("search",this.search);
+          const requestOptions = {
+            method: "GET",
+            credentials:'include'
+          } 
+      fetch('http://www.back.poney.local/searchmembers.php', requestOptions )
+        .then(response => response.json())
+        .then(data =>{console.log(data),this.search=data})
+      },  
+    }
+}
+
+
 </script>
 <style>
 
@@ -86,14 +105,26 @@ export default {
     color:white;
     list-style-type:none;
   }
+
   input.search{
     display:block;
     height:30px;
     width:300px;
     border:none;
-    border-radius:5px
-
-
+    border-radius:5px 0px 0px 5px;
+    outline:none
+  }
+  :placeholder-shown{
+    margin-left: 10px;
+  }
+  button{
+    border:none;
+    border-radius:0px 5px 5px 0px;
+    background-color:white;
+    outline:none;
+    cursor:pointer;
+    color:#147871;
+    font-size:14px
   }
   .searching {
     display: flex;

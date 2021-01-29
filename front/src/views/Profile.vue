@@ -34,7 +34,7 @@ export default {
       pseudo:"toto", 
       password:null,
       id:"",
-      photo:null,
+      photo:"",
       adherents: [
         {id:""},
         {prenom:""},

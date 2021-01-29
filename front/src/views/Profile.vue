@@ -5,8 +5,7 @@
     <div class="profilecard">
       <div class="info">
         <h1>Bienvenue {{pseudo}}</h1>
-
-        <Avatar :pseudo="pseudo" :img="photo" ></Avatar>      
+        <Avatar :pseudo="pseudo" :img="photo" >{{img}}</Avatar>      
           <input type="file" id="photo" ref="photo" name="photo" v-on:change="handleFileUpload()"/>
           <button v-on:click="submitFile()">Envoyer</button>
       </div> 
@@ -97,14 +96,12 @@ body {
   height:100vh;
   margin-top:10px;
   background: linear-gradient(to bottom, #1a725a, #327b83);  
-
 }
 
 h1 {
   color:white;
   margin-top:10px;
 }
-
 
 .profilecard{
   height:100%;
@@ -118,7 +115,6 @@ h1 {
   padding:30px;
   display:flex;
   justify-content:space-between        
-
 }
 
 .avatar{

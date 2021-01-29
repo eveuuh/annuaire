@@ -28,7 +28,7 @@ if(isset($_FILES['photo']['name']))
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
            
             if(count($result)>1){
-                $rqt= 'UPDATE Profils set photo=:photo WHERE id=:id';
+                $rqt= 'UPDATE Profils set photo=:photo WHERE AdherentID=:id';
             }
             else {
                 $rqt='INSERT INTO Profils (photo,AdherentId, titre) values (:photo, :id, "")';

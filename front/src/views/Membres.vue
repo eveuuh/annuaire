@@ -1,8 +1,11 @@
 <template>
   <div id="membres">
-    <Nav></Nav>
+    <Nav></Nav>    
     <div class="members">
       <h1>Voici les membres</h1>
+        <div class="searching">
+          <input type="search" class="search" placeholder="Chercher par Nom ou Pseudo">
+        </div>
       <Member v-for="(adherent, id) in adherents"
        :pseudo="adherent.Pseudo"
        :prenom="adherent.Prenom"
@@ -56,7 +59,7 @@ export default {
       } 
       fetch('http://www.back.poney.local/members.php', {credentials:'include'})
        .then(response => response.json())
-        .then(data =>(this.adherents=data))
+        .then(data =>{console.log(data),this.adherents=data})
         
       }
 };
@@ -75,9 +78,25 @@ export default {
   }
   h1{
     color:white;
+    text-align: center;
+    font-family: Tahoma;
+
   }
   li{
     color:white;
     list-style-type:none;
+  }
+  input.search{
+    display:block;
+    height:30px;
+    width:300px;
+    border:none;
+    border-radius:5px
+
+
+  }
+  .searching {
+    display: flex;
+    justify-content: center;
   }
 </style>

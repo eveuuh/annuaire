@@ -2,7 +2,6 @@
   <div id="nav">
     <ul class="nav-links">
       <li> <router-link to="/">Poney Fringants</router-link> </li>
-      <li> <router-link to="/about">About</router-link></li>
       <li> <router-link to="/membres">Membres</router-link></li>
       <li> <router-link to="/stats">Stats</router-link></li>   
       <li class="dp" > <router-link to="/profile">Profil</router-link></li>

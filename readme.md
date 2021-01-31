@@ -1,41 +1,52 @@
 # Projet d'annuaire pour l'association des Poney Fringants
 
-## Front
--[x] Login 
--[x] Register
 
-## Back
+## Done
+### Front
+    Formulaire :
+        -[x] Login 
+        -[x] Register
+    Membres:
+        -[X] cards /members: avatar , pseudo, prénom, countdown registered
+        -[x] Avatar par défaut avec initiale et couleur random
+        -[x] barre de recherche
+    [x] Navbar responsive
+### Back
+     Formulaire
+        -[x] Login 
+        -[x] Register
+        -[x] upload photo de profil max 1Mo 
+     Membres:
+        -[x] list all members from sql
+        -[X] si profil sans photo mettre image par defaut API 
+     Profil
+        -[X] bouton se deconnecter navbar
+    Projet
+        -[x] Création d'une base de données Mysql "Poney" dans un fichier ```poney.sql``` 
 
--[x] Création d'une base de données Mysql "Poney" dans un fichier ```poney.sql``` .  
--[x] Login 
--[x] Register
+### TODO
 
-
-##TODO
-#Formulaire :
+## Formulaire :
     -[] S'inscrire avec numero adhérent (n° unique),
     -[] Se logguer avec numero adhérent + MDP
-    - [] Verif mdp + format + rempli
-#Profil:    
-    -[] 1ere connexion dans profil : selection des centres d'interets,
+    -[] Verif mdp + format + rempli
+    -[] Si 1ere connexion redirigé vers profil et selection des centres d'interets 3/8 pour valider inscription.
+
+  
+## Profil:    
     -[]dropdown de selection d'interets
-    -[] UX page profil
-    - [] upload photo de profil max 1Mo 
+    -[]UX page profil
     - TODO: quand on change dimage erreur SRC 404 durant la MAJ
-#Membres:
-    -[] list all members from sql
-    -[] cards /members: avatar , pseudo, prénom, countdown registered
+## Membres:
+    
     -[] si profil non rempli : grisé non cliquable, else consultable 
-    -[] si profil sans photo mettre image par defaut API 
-    - [] Pagination 50mb /page
-    - précédent/suivant
-    - barre de recherche: nom, pseudo, login, email
-    - recherche par liste d'interets.
-#statistiques
-- bouton se deconnecter navbar
-- menu hamburger
-- Navbar
-- responsive
+    - []Pagination + filtre 50 membres/page
+    - []barre de recherche fonctionnelle
+    - []recherche par liste d'interets.
+## statistiques
+
+- [] Back + front 
+
 
 ## Gestion du projet
 
@@ -46,9 +57,10 @@
 - [x]Creer Repo sur Github et versionning de code 
 - [X] Fichier Readme pour voir l'évolution du travail   
 - [] Finir wireframe/maquette pour le rendu
-- Verif html css au validator
+- [] Verif html css au validator
+- [] Heberger le site sur un serveur et le deployer
 
 
-en cours bug:
+## En cours bug:
 photo profil partie profil
 fetch membre +display

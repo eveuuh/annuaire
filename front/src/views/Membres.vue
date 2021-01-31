@@ -7,7 +7,7 @@
           <input type="text" class="search" v-model="search" placeholder="Chercher par Nom ou Pseudo">
           <button v-on:click="search">Rechercher</button>
         </div>
-        
+
       <Member v-for="(adherent, id) in adherents"
        :pseudo="adherent.Pseudo"
        :prenom="adherent.Prenom"
@@ -17,19 +17,20 @@
        :key="id"
        />
     </div>
+  
   </div>
+  
 </template>
 <script>
 // @ is an alias to /src
 import Nav from '@/components/Nav.vue'
 import Member from '@/components/Member.vue'
-
 export default {
   
   name: 'Membres',
    components: {
     Nav,
-    Member,
+    Member
   },
   data: () => {
     return {
@@ -48,6 +49,7 @@ export default {
         { photo:""},
         
       ]
+     
     }
   }, 
  
@@ -79,6 +81,7 @@ export default {
         .then(data =>{console.log(data),this.search=data})
       },  
     }
+    
 }
 
 

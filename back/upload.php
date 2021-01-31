@@ -1,8 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 
 include("config.php");
 include ("header.php");
@@ -12,10 +8,10 @@ $userId= $_SESSION['id'];
 if(isset($_FILES['photo']['name']))
 {
     $photo_name =$_FILES['photo']['name'];
-    $valid_extensions = array("jpg","GIF","png");
+    $valid_extensions = array("jpg","GIF","png"); // 
     $extension = pathinfo($photo_name, PATHINFO_EXTENSION);
-   //if(in_array($extension, $valid_extensions))
-    //{   
+    $maxsize = 1000000; //Taille max de 1MO autorisé
+   
         $upload_path = 'upload/' . time() . '.' .$extension;
         if(move_uploaded_file($_FILES['photo']['tmp_name'],$upload_path))
         {
@@ -64,7 +60,7 @@ if(isset($_FILES['photo']['name']))
 
 else
 {
-    $message = 'Seulement les.jpg, .gif et .png images peuvent être téléchargées';
+    $message = 'Seulement les.jpg, .gif et .png images peuvent être téléchargées et de 1MO max';
 }
 
 

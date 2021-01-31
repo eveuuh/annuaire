@@ -10,11 +10,10 @@
           <button v-on:click="submitFile()">Envoyer</button>
       </div> 
       <div class="interest">
-        <p> mes interets</p>
-      </div>  
+        <h2> Mes interets</h2>
+      </div>
     </div>
   </div>
-  
 </template>
 
 <script>
@@ -25,7 +24,7 @@ export default {
   name: 'Profile',
   components : {
     Avatar,
-    Nav
+    Nav,
   },
   
   data: () => {
@@ -43,7 +42,7 @@ export default {
       
     }
   }, 
-    mounted: function () {
+  mounted: function () {
       fetch('http://www.back.poney.local/connected.php', {credentials:'include'})
             .then(response => response.json())
             .then((data) => {
@@ -100,9 +99,12 @@ body {
 
 h1 {
   color:white;
-  margin-top:10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+h2{
+  color:white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 .profilecard{
   height:100%;
   width: 800px;

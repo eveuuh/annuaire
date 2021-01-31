@@ -1,5 +1,9 @@
 # Projet d'annuaire pour l'association des Poney Fringants
 
+Ce projet entre dans le cadre d'un brief d'évaluation finale. C'est une application VueJs(3) servi en PHP, et utilisant une BDD MySQL. Afin de faciliter le développement de cette application Web, j'ai fait le choix de prendre Vue comme framework et de l'installer via Node. Afin de faire communiquer le client et serveur j'ai utilisé l'API Fetch pour les requêtes.
+Pour le développement j'ai utilisé un serveur apache pour servir les fichiers. Pour se faire j'ai fait deux dossiers un front et un back; chacun exécuté sur une adresse locale différente, mais qui me permettra avec l'API d'appeler le back. Grâce à Node il suffit alors de lancer ```npm run serve ``` qui éxécutera mes scripts sur une adresse locale configurée dans les fichiers de config Apache http://www.poney.local:8081/ .
+
+La mise en place du projet s'est fait aprés le wireframe et maquettage de celui ci sur Figma, retrouvable à cette adresse : https://www.figma.com/file/IjDGexkKkpsqpAE2UTNo3z/Wireframe-Poney-Fringants?node-id=33%3A95 
 
 ## Done
 ### Front
@@ -64,3 +68,4 @@
 ## En cours bug:
 photo profil partie profil
 fetch membre +display
+

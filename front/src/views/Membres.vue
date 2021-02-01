@@ -17,8 +17,13 @@
        :id="adherent.id"
        :key="id"
        />
+    
+      <div class="pagination">
+        <button class="btn" v-on:click="previous()">Précédent</button>
+        <button class="btn" v-on:click="nextPage()">Suivant</button>
+      </div>
     </div>
-   
+
   </div>
   
 </template>
@@ -36,7 +41,6 @@ export default {
   },
   data: () => {
     return {
-      current:1,
       connected:true,
       password:null,
       photo:null,
@@ -46,13 +50,14 @@ export default {
         {prenom:""},
         {pseudo:""},
         {dateadhesion:""}
-      
       ],
       profils: [
         { photo:""},
         
-      ]
-     
+      ],
+      currentPage:1,
+      perPage:10
+      
     }
   }, 
  
@@ -82,10 +87,26 @@ export default {
           fetch('http://www.back.poney.local/searchmembers.php/?search='+this.search, requestOptions )
             .then(response => response.json())
             .then(data =>{this.adherents=data})
-            
-          },  
-        }
-    
+      },  
+      previous(){     
+        this.currentPage--
+          fetch('http://www.back.poney.local/searchmembers.php/?page='+this.currentPage, {credentials:'include'})
+            .then(response => response.json())
+            .then(data =>{this.adherents=data})
+                  
+      },
+        //fetch sur nouvelle page 
+        // if !currentPage 
+      
+      nextPage(){
+        this.currentPage++
+          fetch('http://www.back.poney.local/searchmembers.php/?page='+this.currentPage, {credentials:'include'})
+            .then(response => response.json())
+            .then(data =>{this.adherents=data})
+                 
+      }
+    }
+
 }
 
 

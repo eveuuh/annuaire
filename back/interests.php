@@ -4,7 +4,7 @@ include("config.php");
 include ("header.php");
 
 $result = [];
-$rqt = "SELECT * FROM Adherents LEFT JOIN Profils on Profils.AdherentID=Adherents.id LIMIT 10" ;
+$rqt = "SELECT InteretID From Interets" ;
 
 try {
     $statement = $connexion->prepare($rqt);
@@ -20,3 +20,8 @@ exit;
     }');
 } 
 
+$output = array (
+    'InteretID' => $id,
+    'nom' => $nom
+);
+echo json_encode($output);

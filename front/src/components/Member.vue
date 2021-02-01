@@ -21,7 +21,7 @@ export default {
     pseudo: { type: String, default: 'Pseudo'},
     prenom: { type: String, default: 'Prenom'},
     dateadhesion: { type: String, default: ''},
-    img: {type: String, default:'test'}
+    img: {type: String, default:null}
 
   }
 }  
@@ -49,7 +49,6 @@ h2{
     top:8px;
     left:85px;
     height:8px;
-    width:8px;
     font-family: Tahoma
 
 

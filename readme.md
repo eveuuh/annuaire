@@ -69,7 +69,6 @@ La mise en place du projet s'est fait aprés le wireframe et maquettage de celui
 
 
 ## En cours bug:
-- photo profil partie profile ne s'affiche pas
-- Manque de librairies compatible vue3 pour gestion pagination + dropdown list with checkbox
+- Manque de librairies compatible vue3 pour gestion pagination 
 - 
 

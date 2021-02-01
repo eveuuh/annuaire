@@ -5,9 +5,10 @@
       <h1>Voici les membres</h1>
         <div class="searching">
           <input type="text" class="search" v-model="search" placeholder="Chercher par Nom ou Pseudo">
-          <button v-on:click="search">Rechercher</button>
+          <button v-on:click="searchMembers">Rechercher</button>
         </div>
 
+     
       <Member v-for="(adherent, id) in adherents"
        :pseudo="adherent.Pseudo"
        :prenom="adherent.Prenom"
@@ -39,7 +40,7 @@ export default {
       connected:true,
       password:null,
       photo:null,
-      search:[],
+      search:"",
       adherents: [
         {id:""},
         {prenom:""},
@@ -71,18 +72,19 @@ export default {
       },
     
     methods:{
-      search() {
-      let formParams = new URLSearchParams();
-      formParams.append("search",this.search);
+      searchMembers() {
+        let formParams = new URLSearchParams();
+        formParams.append("search",this.search);
           const requestOptions = {
             method: "GET",
             credentials:'include'
           } 
-      fetch('http://www.back.poney.local/searchmembers.php', requestOptions )
-        .then(response => response.json())
-        .then(data =>{console.log(data),this.search=data})
-      },  
-    }
+          fetch('http://www.back.poney.local/searchmembers.php/?search='+this.search, requestOptions )
+            .then(response => response.json())
+            .then(data =>{this.adherents=data})
+            
+          },  
+        }
     
 }
 

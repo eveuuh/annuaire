@@ -17,7 +17,7 @@
        :key="id"
        />
     </div>
-  
+   
   </div>
   
 </template>
@@ -25,15 +25,17 @@
 // @ is an alias to /src
 import Nav from '@/components/Nav.vue'
 import Member from '@/components/Member.vue'
+
 export default {
   
   name: 'Membres',
    components: {
     Nav,
-    Member
+    Member   
   },
   data: () => {
     return {
+      current:1,
       connected:true,
       password:null,
       photo:null,

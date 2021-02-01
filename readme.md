@@ -63,11 +63,13 @@ La mise en place du projet s'est fait aprés le wireframe et maquettage de celui
 - [x]Creer Repo sur Github et versionning de code 
 - [X] Fichier Readme pour voir l'évolution du travail   
 - [] Finir wireframe/maquette pour le rendu
+- [] Commenter le code
 - [] Verif html css au validator
 - [] Heberger le site sur un serveur et le deployer
 
 
 ## En cours bug:
-photo profil partie profil
-fetch membre +display
+- photo profil partie profile ne s'affiche pas
+- Manque de librairies compatible vue3 pour gestion pagination + dropdown list with checkbox
+- 
 

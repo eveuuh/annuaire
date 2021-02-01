@@ -17,6 +17,8 @@ La mise en place du projet s'est fait aprés le wireframe et maquettage de celui
         -[x] Avatar par défaut avec initiale et couleur random
         -[x] barre de recherche
     [x] Navbar responsive
+    Profil :
+    -[X]dropdown de selection d'interets
 ### Back
      Formulaire
         -[x] Login 
@@ -25,6 +27,8 @@ La mise en place du projet s'est fait aprés le wireframe et maquettage de celui
      Membres:
         -[x] list all members from sql
         -[X] si profil sans photo mettre image par defaut API 
+        - [X]barre de recherche fonctionnelle
+
      Profil
         -[X] bouton se deconnecter navbar
     Projet
@@ -40,14 +44,10 @@ La mise en place du projet s'est fait aprés le wireframe et maquettage de celui
 
   
 ## Profil:    
-    -[]dropdown de selection d'interets
     -[]UX page profil
-    - TODO: quand on change dimage erreur SRC 404 durant la MAJ
 ## Membres:
-    
     -[] si profil non rempli : grisé non cliquable, else consultable 
     - []Pagination + filtre 50 membres/page
-    - []barre de recherche fonctionnelle
     - []recherche par liste d'interets.
 ## statistiques
 
@@ -69,6 +69,6 @@ La mise en place du projet s'est fait aprés le wireframe et maquettage de celui
 
 
 ## En cours bug:
-- Manque de librairies compatible vue3 pour gestion pagination 
+-  gestion pagination 
 - 
 

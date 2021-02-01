@@ -215,6 +215,7 @@ export default {
   box-shadow:1px 1px rgb(143, 136, 136);
   border: none;
   cursor: pointer;
+  outline:none;
 }
 
 /* Dropdown button on hover & focus */

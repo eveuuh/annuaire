@@ -107,6 +107,11 @@
                </ul>     
             </div>
           </div>
+          <div class="interestDisplayed">
+                <Interet></Interet>
+                <Interet></Interet>
+          </div>
+
       </div>
     </div>
 </template>
@@ -114,6 +119,7 @@
 <script>
 import Avatar from '@/components/Avatar.vue'
 import Nav from '@/components/Nav.vue'
+import Interet from '../components/Interet.vue'
 
 
 
@@ -121,7 +127,8 @@ export default {
   name: 'Profile',
   components : {
     Avatar,
-    Nav
+    Nav,
+    Interet
 
   },
   
@@ -269,12 +276,9 @@ ul.interets{
   border-radius: 3px;
   list-style: none;
   margin-left:-8px
-  
 }
 
-
 ul >li{
-
   background-color: darkcyan;
   padding: 5px 10px;
   margin-top: 1px;
@@ -285,7 +289,6 @@ ul >li{
   font-size: 14px;
   font-weight: 500;
   display: block;
-  
 }
 
 .dropbtn {
@@ -306,9 +309,12 @@ ul >li{
   background-color: #0bc08a;
 }
 
+.interestDisplayed {
+  display:flex;
+  flex-direction: column;
+  
+}
     
-    
-
 </style>
 
 

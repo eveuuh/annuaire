@@ -27,8 +27,8 @@ La mise en place du projet s'est fait aprés le wireframe et maquettage de celui
      Membres:
         -[x] list all members from sql
         -[X] si profil sans photo mettre image par defaut API 
-        - [X]barre de recherche fonctionnelle
-
+        -[X]barre de recherche fonctionnelle
+        -[X]Pagination
      Profil
         -[X] bouton se deconnecter navbar
     Projet
@@ -41,14 +41,12 @@ La mise en place du projet s'est fait aprés le wireframe et maquettage de celui
     -[] Se logguer avec numero adhérent + MDP
     -[] Verif mdp + format + rempli
     -[] Si 1ere connexion redirigé vers profil et selection des centres d'interets 3/8 pour valider inscription.
-
-  
 ## Profil:    
     -[]UX page profil
+    -[]choisir interets 
 ## Membres:
-    -[] si profil non rempli : grisé non cliquable, else consultable 
-    - []Pagination + filtre 50 membres/page
-    - []recherche par liste d'interets.
+    -[]si profil non rempli : grisé non cliquable, else consultable 
+    -[]recherche par liste d'interets.
 ## statistiques
 
 - [] Back + front 
@@ -69,6 +67,5 @@ La mise en place du projet s'est fait aprés le wireframe et maquettage de celui
 
 
 ## En cours bug:
--  gestion pagination 
-- 
+  
 

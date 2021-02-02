@@ -10,7 +10,7 @@ $rqt = "INSERT INTO InteretAdherent (AdherentID, CentreInteretID) VALUES (:id, :
 try {
     $statement = $connexion->prepare($rqt);  
     $statement->bindParam(':id', $_SESSION['id']);
-    $statement->bindParam(':interest', $_POST['memberInterest']);
+    $statement->bindParam(':interet', $interest);
     $statement->execute();
     $result = $statement->fetchAll(PDO::FETCH_ASSOC);
     echo json_encode($result);

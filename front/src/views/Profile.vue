@@ -107,7 +107,7 @@ export default {
     submitInterest(){
       const interest =this.interest;
         let formParams= new FormData();
-        formParams.append("memberInterest");
+        formParams.append("memberInterest",this.interest);
         formParams.append("id",1);
           const requestOptions = {
             method: "POST",

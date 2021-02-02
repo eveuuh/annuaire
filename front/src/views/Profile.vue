@@ -11,107 +11,23 @@
       </div> 
      
       
-        <div id="Vue">      
-          <h2> Mes interets</h2>
+      <div id="Vue">      
+        <h2> Mes interets</h2>
           <button @click="toggleDropdown" class="dropbtn">Choisir un centre d'interêt</button>
             <div v-if="display" class="Dropdown-ItemList">
-              <ul class="interets">
-                <li class="Dropdown-Item">
-                  <input type="checkbox" id="Sport" value="Sport" v-model="checkedNames">      
-                  <label for="Sport">Sport</label>
-                </li>
-                <li class="Dropdown-Item">
-                  <input type="checkbox" id="Musique" value="Musique" v-model="checkedNames"> 
-                  <label for="Musique">Musique</label>
-                </li>
-                <li class="Dropdown-Item">                      
-                  <input type="checkbox" id="Jeux vidéos" value="Jeux vidéos" v-model="checkedNames"> 
-                  <label for="Jeux vidéos">Jeux vidéos</label>
-                </li>
-                <li class="Dropdown-Item">                      
-                  <input type="checkbox" id="Lecture" value="Lecture" v-model="checkedNames">
-                  <label for="Lecture">Lecture</label>
-                </li> 
-                <li class="Dropdown-Item">                      
-                    <input type="checkbox" id="Informatique" value="Informatique" v-model="checkedNames">
-                    <label for="Informatique">Informatique</label>
-                </li>    
-                 <li class="Dropdown-Item">   
-                    <input type="checkbox" id="Sorties" value="Sorties" v-model="checkedNames">
-                    <label for="Sorties">Sorties</label>
-                </li>     
-                <li class="Dropdown-Item">       
-                    <input type="checkbox" id="Cuisine" value="Cuisine" v-model="checkedNames">
-                    <label for="Cuisine">Cuisine</label>
-                </li>     
-                <li class="Dropdown-Item">   
-                    <input type="checkbox" id="Aviation" value="Aviation" v-model="checkedNames">
-                    <label for="Aviation">Aviation</label>
-                </li>     
-                 <li class="Dropdown-Item">       
-                    <input type="checkbox" id="Mécanique" value="Mécanique" v-model="checkedNames">
-                    <label for="Mécaniques">Mécanique</label>
-                </li>     
-                 <li class="Dropdown-Item">       
-                    <input type="checkbox" id="Licornes" value="Licornes" v-model="checkedNames">
-                    <label for="Licornes">Licornes</label>
-                </li>     
-                 <li class="Dropdown-Item">       
-                    <input type="checkbox" id="Joaillerie" value="Joaillerie" v-model="checkedNames">
-                    <label for="Joaillerie">Joaillerie</label>
-                 </li>      
-                 <li class="Dropdown-Item">       
-                    <input type="checkbox" id="Agriculture" value="Agriculture" v-model="checkedNames">
-                    <label for="Agriculture">Agriculture</label>
-                 </li>    
-                 <li class="Dropdown-Item">       
-                    <input type="checkbox" id="Cinéma" value="Cinéma" v-model="checkedNames">
-                    <label for="Cinéma">Cinéma</label>
-                </li>     
-                  <li class="Dropdown-Item">      
-                    <input type="checkbox" id="Politique" value="Politique" v-model="checkedNames">
-                    <label for="Politique">Politique</label>
-                  </li>   
-                 <li class="Dropdown-Item">       
-                    <input type="checkbox" id="Couture" value="Couture" v-model="checkedNames">
-                    <label for="Couture">Couture</label>
-                 </li>    
-                 <li class="Dropdown-Item">       
-                    <input type="checkbox" id="Animaux" value="Animaux" v-model="checkedNames">
-                    <label for="Animaux">Animaux</label>
-                 </li>    
-                 <li class="Dropdown-Item">       
-                    <input type="checkbox" id="Sciences" value="Sciences" v-model="checkedNames">
-                    <label for="Sciences">Sciences</label>
-                 </li>    
-                 <li class="Dropdown-Item">       
-                  <input type="checkbox" id="Histoire" value="Histoire" v-model="checkedNames">
-                    <label for="Histoire">Histoire</label>
-                 </li>    
-                 <li class="Dropdown-Item">       
-                    <input type="checkbox" id="SVT" value="SVT" v-model="checkedNames">
-                    <label for="SVT">SVT</label>
-                 </li>    
-                 <li class="Dropdown-Item">       
-                    <input type="checkbox" id="Physique-Chimie" value="Physique-Chimie" v-model="checkedNames">
-                    <label for="Physique-Chimie">Physique-Chimie</label>
-                 </li>    
-                 <li class="Dropdown-Item">       
-                    <input type="checkbox" id="Taxidermie" value="Taxidermie" v-model="checkedNames">
-                    <label for="Taxidermie">Taxidermie</label>
-                 </li>    
-                 <li class="Dropdown-Item">       
-                    <input type="checkbox" id="Philatélie" value="Philatélie" v-model="checkedNames">
-                    <label for="Philatélie">Philatélie</label>
-                 </li>    
-               </ul>     
+              <ul class="interets">   
+                  <li  class="Dropdown-Item" type="checkbox"  v-for="interest in interests"> 
+                    <input type="checkbox" id="Philatélie" value="Philatélie" v-model="checkedNames">{{interest.nom}}
+                  </li>            
+             </ul>     
             </div>
           </div>
-          <div class="interestDisplayed">
-                <Interet></Interet>
-                <Interet></Interet>
-          </div>
-
+        <div class="interestDisplayed">
+          <Interet></Interet>
+          <Interet></Interet>
+          <Interet></Interet>
+          <Interet></Interet>
+        </div>
       </div>
     </div>
 </template>
@@ -144,7 +60,9 @@ export default {
         {prenom:""},
         {pseudo:""}
       ],
-      display: false
+      display: false,
+      interests:[]
+      
 
       
     }
@@ -160,7 +78,10 @@ export default {
             this.id=data.id
             }
           );
-      },   
+      fetch('http://www.back.poney.local/interests.php', {credentials:'include'})
+       .then(response => response.json())
+       .then(data =>{console.log(data),this.interests=data})
+  },   
       
   methods:{
     disconnect(ev) {
@@ -270,7 +191,7 @@ h2{
 
 
 ul.interets{
-  width: 189%;
+  width: 173%;
   padding: 5px 10px;
   margin-top: -5px;
   border-radius: 3px;
@@ -312,9 +233,14 @@ ul >li{
 .interestDisplayed {
   display:flex;
   flex-direction: column;
-  
+  top:-95px;
+  height:100%;
+  position:relative
 }
     
 </style>
 
 
+//recup l'element selectionné
+//le mettre dans component Interet
+// l'insert dans la BDD 

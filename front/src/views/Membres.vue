@@ -92,12 +92,8 @@ export default {
         this.currentPage--
           fetch('http://www.back.poney.local/searchmembers.php/?page='+this.currentPage, {credentials:'include'})
             .then(response => response.json())
-            .then(data =>{this.adherents=data})
-                  
+            .then(data =>{this.adherents=data})                  
       },
-        //fetch sur nouvelle page 
-        // if !currentPage 
-      
       nextPage(){
         this.currentPage++
           fetch('http://www.back.poney.local/searchmembers.php/?page='+this.currentPage, {credentials:'include'})

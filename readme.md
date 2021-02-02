@@ -19,6 +19,7 @@ La mise en place du projet s'est fait aprés le wireframe et maquettage de celui
     [x] Navbar responsive
     Profil :
     -[X]dropdown de selection d'interets
+    -[x]affichage component interet
 ### Back
      Formulaire
         -[x] Login 

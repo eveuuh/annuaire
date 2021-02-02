@@ -1,5 +1,5 @@
 <template>
-<div class="main">   
+
     <div id="interetCard">
       <div class="nameInterest">
         <p>{{nom}}</p> 
@@ -14,7 +14,7 @@
       </div>     
 
     </div>
-</div>    
+  
 </template>
 <script>
 // @ is an alias to /src

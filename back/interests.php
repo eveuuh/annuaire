@@ -4,7 +4,7 @@ include("config.php");
 include ("header.php");
 
 $result = [];
-$rqt = "SELECT InteretID From Interets" ;
+$rqt = "SELECT nom,InteretId From Interets" ;
 
 try {
     $statement = $connexion->prepare($rqt);

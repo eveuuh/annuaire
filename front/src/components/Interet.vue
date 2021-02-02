@@ -2,7 +2,7 @@
 
     <div id="interetCard">
       <div class="nameInterest">
-        <p>{{nom}}</p> 
+        <p>{{checkedName}}</p> 
       </div>
       <div class="deleteInterest">
         <button class="trash">
@@ -22,7 +22,7 @@
 export default {
   name: 'Interet',
   props: {
-    nom: { type: String, default: 'interet'}
+    checkedName:""
   }
 }  
 </script>

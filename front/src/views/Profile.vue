@@ -16,17 +16,15 @@
           <button @click="toggleDropdown" class="dropbtn">Choisir un centre d'interêt</button>
             <div v-if="display" class="Dropdown-ItemList">
               <ul class="interets">   
-                  <li  class="Dropdown-Item" type="checkbox"  v-for="interest in interests"> 
-                    <input type="checkbox" id="Philatélie" value="Philatélie" v-model="checkedNames">{{interest.nom}}
+                  <li  class="Dropdown-Item" type="checkbox"  v-for="(interest,id) in interests" :key="id"> 
+                    <input type="checkbox" label="" v-bind:value="interest" v-model="checkedNames">{{interest.nom}}
                   </li>            
-             </ul>     
+             </ul>    
             </div>
+            <button v-on:click="submitInterest()">Enregistrer</button>
           </div>
         <div class="interestDisplayed">
-          <Interet></Interet>
-          <Interet></Interet>
-          <Interet></Interet>
-          <Interet></Interet>
+        <Interet v-for="(checkedName,id) in checkedNames" :key="id" :checkedName="checkedName.nom">{{checkedName}}</Interet>
         </div>
       </div>
     </div>
@@ -61,10 +59,8 @@ export default {
         {pseudo:""}
       ],
       display: false,
-      interests:[]
-      
-
-      
+      interests:[],
+      checkedNames:[]  
     }
   }, 
   mounted: function () {
@@ -80,7 +76,7 @@ export default {
           );
       fetch('http://www.back.poney.local/interests.php', {credentials:'include'})
        .then(response => response.json())
-       .then(data =>{console.log(data),this.interests=data})
+       .then(data =>{this.interests=data})
   },   
       
   methods:{
@@ -94,12 +90,10 @@ export default {
 
     },
     submitFile(){
-      //ev.preventDefault();
       const files = this.$refs.photo.files[0];
         let formParams = new FormData();
         formParams.append("photo",files);
         formParams.append("id",1);
-
 
         const requestOptions = {
           method: "POST",
@@ -108,7 +102,21 @@ export default {
         } 
         fetch('http://www.back.poney.local/upload.php',requestOptions)     
             .then(response => response.json())
-            .then((data) => { console.log("test2",data);this.photo = data.photo});
+            .then((data) => {this.photo = data.photo});
+    },
+    submitInterest(){
+      const interest =this.interest;
+        let formParams= new FormData();
+        formParams.append("memberInterest");
+        formParams.append("id",1);
+          const requestOptions = {
+            method: "POST",
+            body: formParams, 
+            credentials:'include'
+        } 
+        fetch('http://www.back.poney.local/memberInterest.php',requestOptions)     
+            .then(response => response.json())
+            .then((data) => {this.interest = data.interest});
     },
     handleFileUpload(){
       this.photo = this.$refs.photo.files[0];

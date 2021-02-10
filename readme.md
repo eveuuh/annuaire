@@ -16,7 +16,6 @@ La mise en place du projet s'est fait aprés le wireframe et maquettage de celui
         -[X] cards /members: avatar , pseudo, prénom, countdown registered
         -[x] Avatar par défaut avec initiale et couleur random
         -[x] barre de recherche
-    [x] Navbar responsive
     Profil :
     -[X]dropdown de selection d'interets
     -[x]affichage component interet
@@ -34,7 +33,7 @@ La mise en place du projet s'est fait aprés le wireframe et maquettage de celui
         -[X] bouton se deconnecter navbar
     Projet
         -[x] Création d'une base de données Mysql "Poney" dans un fichier ```poney.sql``` 
-
+        -[X]choisir interets 
 ### TODO
 
 ## Formulaire :
@@ -44,7 +43,7 @@ La mise en place du projet s'est fait aprés le wireframe et maquettage de celui
     -[] Si 1ere connexion redirigé vers profil et selection des centres d'interets 3/8 pour valider inscription.
 ## Profil:    
     -[]UX page profil
-    -[]choisir interets 
+    -[]stocker interets choisis
 ## Membres:
     -[]si profil non rempli : grisé non cliquable, else consultable 
     -[]recherche par liste d'interets.
@@ -69,4 +68,5 @@ La mise en place du projet s'est fait aprés le wireframe et maquettage de celui
 
 ## En cours bug:
   
+    [] Navbar responsive
 

@@ -31,13 +31,21 @@ export default {
 
 .card{
     position:relative;
-    box-shadow: 1px 0 5px rgb(250, 249, 249);
-    background-color:transparent ;
     width:300px;
     height:100px;
     display:inline-block;
     margin:20px;
     text-align:left;
+    background: white;
+    background: linear-gradient(
+        to right bottom,
+        rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0.3)
+    );
+    border-radius: 1rem;
+    z-index: 2;
+    backdrop-filter: blur(2rem);
+    
 }
  
 .card > * {
@@ -50,9 +58,6 @@ h2{
     left:85px;
     height:8px;
     font-family: Tahoma
-
-
-
 }
 
 h3{

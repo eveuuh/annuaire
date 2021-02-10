@@ -16,11 +16,12 @@
        :img="adherent.Photo"
        :id="adherent.id"
        :key="id"
+
        />
     
       <div class="pagination">
-        <button class="btn" v-on:click="previous()">Précédent</button>
-        <button class="btn" v-on:click="nextPage()">Suivant</button>
+        <button class="btnpagination" v-on:click="previous()">Précédent</button>
+        <button class="btnpagination" v-on:click="nextPage()">Suivant</button>
       </div>
     </div>
 
@@ -113,16 +114,18 @@ export default {
     font-family: Tahoma;
     font-size: 18px;
     color: #222;
-    background: linear-gradient(to bottom, #1C8A82, #147871);
+    background: linear-gradient(to right top, #65dfc9, #6cdbeb);
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   h1{
-    color:white;
     text-align: center;
-    font-family: Tahoma;
+    color: #426696;
+    font-weight: 600;
+    font-size: 3rem;
+    opacity: 0.8;
 
   }
   li{
@@ -154,4 +157,37 @@ export default {
     display: flex;
     justify-content: center;
   }
+  .pagination{
+    display: flex;
+    justify-content: center;
+  }
+  .btnpagination{
+    margin-right: 10px;
+    border: none;
+    border-radius: 1px 1px 1px 1px;
+    background-color: white;
+    outline: none;
+    cursor: pointer;
+    color: #147871;
+    font-size: 14px;
+    padding: 5px;
+    width: 90px;
+  }
+
+  @media screen and (max-width: 768px) { 
+      #membres{
+        display:block;
+        height: 100vh;
+
+      }
+      .members{
+        height: 100%;
+      }
+      .pagination{
+        display: flex;
+        justify-content: center;
+  }
+     
+
+  }    
 </style>

@@ -25,7 +25,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'Nav',
   methods: {
@@ -44,10 +43,20 @@ export default {
           link.style.webkitAnimation = ''
         } else {
           link.style.webkitAnimation = `navLinkFade 0.5s ease forwards ${
-            index / 7
-          }s`
+            index / 7}s`
           link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7}s`
         }
+      })
+    },
+    openDropdownNav() {
+      const dropdownLink = document.querySelectorAll('.nav-links')
+      dropdownLink.forEach((dropdown) => {
+        dropdown.addEventListener('mouseover', () => {
+          dropdown.children[1].style.display = 'block'
+        })
+        dropdown.addEventListener('mouseleave', () => {
+          dropdown.children[1].style.display = 'none'
+        })
       })
     },
     myFunction() {
@@ -65,6 +74,7 @@ export default {
       }
       }
     },
+   
     disconnect(ev) {
             ev.preventDefault(); 
             fetch('http://www.back.poney.local/disconnect.php', {credentials:'include'})     
@@ -72,19 +82,17 @@ export default {
             this.pseudo = null; 
             this.password = null; 
             this.connected = false; 
-
   }
-
   }
 };
 </script>
 
-<style lang="scss">
+<style >
+
   a { 
    text-decoration:none;
    color:white;
   }
-
   .dp {
     display:none;
   }
@@ -92,7 +100,7 @@ export default {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color:#31857e;
+    background: linear-gradient(to right top, #65dfc9, #6cdbeb);
     font-family: 'Montserrat', sans-serif;
     position: fixed;
     width: 100%;
@@ -109,15 +117,15 @@ export default {
   }
   ul.nav-links li {
     list-style: none;
+    background-color:none ;
   }
   ul.nav-links a {
     text-decoration: none;
     color: #fefefe;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: bold;
     display: block;
   }
-  
   #burger {
     display: none;
     cursor: pointer;
@@ -129,7 +137,6 @@ export default {
     background-color: #fefefe;
     transition: all 0.3s ease-in;
   }
-
   ul.dropdown-menu li:first-child {
     margin: 0 0 10px 0;
   }
@@ -142,26 +149,28 @@ export default {
   ul.dropdown-menu a {
     line-height: 8vh;
     padding: 5px 15px;
-    background-color: #7c3434;
     line-height: 50px;
   }
-
   @media screen and (max-width: 768px) {
+   
     ul.nav-links {
       position: absolute;
+      display: flex;
       flex-direction: column;
       width: 100%;
-      height: 92vh;
+      height: 100vh;
       top: 8vh;
-      right: 0;
+      right: -90px;
       padding: 100px;
       align-items: center;
       justify-content: flex-start;
-      background-color: #239985;
-      opacity: 0.8;
       transform: translateX(100%);
       transition: transform 0.5s ease-in;
+      background-color: #0f0b0b6c;
+      
+
     }
+  
     ul.nav-links li {
       opacity: 0;
     }
@@ -181,6 +190,9 @@ export default {
     .dp {
       display:flex;
     }
+   
+    
+    
   }
   .nav-active {
     transform: translateX(0) !important;
@@ -204,7 +216,6 @@ export default {
   .toggle .line3 {
     transform: rotate(45deg) translate(-5px, -6px);
   }
-
 .dropbtn {
   background-color: #4da596de;
   border-radius:10px;
@@ -216,19 +227,17 @@ export default {
   border: none;
   cursor: pointer;
   outline:none;
+   z-index: 2;
 }
-
 /* Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus {
   background-color: #0bc08a;
 }
-
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
   position: relative;
   display: inline-block;
 }
-
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
@@ -239,14 +248,13 @@ export default {
   z-index: 1;
 }
 .dropdown-content .button-close{
-   display: none;
+  display: none;
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
-
 .button-close{
   color: black;
   padding: 12px 16px;
@@ -260,10 +268,8 @@ export default {
   text-decoration: none;
   display: block;
 }
-
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {background-color: rgb(161, 204, 195)}
-
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}  
 </style>

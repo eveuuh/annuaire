@@ -1,41 +1,49 @@
 <template>
 
-  <div class="content">
+  <section>
     <Nav></Nav>
-    <div class="profilecard">
-      <div class="info">
-        <h1>Bienvenue {{pseudo}}</h1>
-        <Avatar :pseudo="pseudo" :img="photo" >{{img}}</Avatar>      
-          <input type="file" id="photo" ref="photo" name="photo" v-on:change="handleFileUpload()"/>
-          <button v-on:click="submitFile()">Envoyer</button>
-      </div> 
-     
-      
-      <div id="Vue">      
-        <h2> Mes interets</h2>
-          <button @click="toggleDropdown" class="dropbtn">Choisir un centre d'interêt</button>
-            <div v-if="display" class="Dropdown-ItemList">
-              <ul class="interets">   
-                  <li  class="Dropdown-Item" type="checkbox"  v-for="(interest,id) in interests" :key="id"> 
-                    <input type="checkbox" label="" v-bind:value="interest" v-model="checkedNames">{{interest.nom}}
-                  </li>            
-             </ul>    
-            </div>
-            <button v-on:click="submitInterest()">Enregistrer</button>
-          </div>
-        <div class="interestDisplayed">
-        <Interet v-for="(checkedName,id) in checkedNames" :key="id" :checkedName="checkedName.nom">{{checkedName}}</Interet>
-        </div>
-      </div>
+    <div class="main">
+      <div class="profilecard">
+        <div class="info">
+          <h1>Bienvenue {{pseudo}}</h1>
+          <Avatar :pseudo="pseudo" :img="photo" >{{img}}</Avatar>      
+            <input type="file" id="photo" ref="photo" name="photo" v-on:change="handleFileUpload()"/>
+            <button v-on:click="submitFile()">Envoyer</button>
+        </div>     
+        <div class="vue">      
+          <h2> Mes interets</h2>
+            <button @click="toggleDropdown" class="dropbtnInterest">Choisir un centre d'interêt</button>
+              <div v-if="display" class="Dropdown-ItemList">
+                <ul class="interets">   
+                    <li  class="Dropdown-Item" type="checkbox"  v-for="(interest,id) in interests" :key="id"> 
+                      <input type="checkbox" label="" v-bind:value="interest" v-model="checkedNames">{{interest.nom}}
+                    </li>            
+                </ul>    
+              </div>
+              <button class="sbinteret" v-on:click="submitInterest()">Enregistrer</button>
+        </div>    
+        <div class="viewinterest">
+        <Interet 
+        v-for="(checkedName,id) in checkedNames" 
+        :key="id" 
+        :checkedName="checkedName.nom"
+         >
+        {{checkedName}} 
+        </Interet>
+    
     </div>
+
+      </div>
+      <div class="circle1"></div>
+    <div class="circle2"></div>
+    </div>
+  </section>
 </template>
 
 <script>
 import Avatar from '@/components/Avatar.vue'
 import Nav from '@/components/Nav.vue'
 import Interet from '../components/Interet.vue'
-
-
 
 export default {
   name: 'Profile',
@@ -60,7 +68,8 @@ export default {
       ],
       display: false,
       interests:[],
-      checkedNames:[]  
+      checkedNames:[]
+      
     }
   }, 
   mounted: function () {
@@ -105,63 +114,105 @@ export default {
             .then((data) => {this.photo = data.photo});
     },
     submitInterest(){
-      const interest =this.interest;
-        let formParams= new FormData();
-        formParams.append("memberInterest",this.interest);
+        let formParams= new URLSearchParams();
+        formParams.append("checkedNames",JSON.stringify(this.checkedNames));
         formParams.append("id",1);
           const requestOptions = {
             method: "POST",
             body: formParams, 
-            credentials:'include'
+            credentials:'include',
+             
         } 
         fetch('http://www.back.poney.local/memberInterest.php',requestOptions)     
             .then(response => response.json())
-            .then((data) => {this.interest = data.interest});
+            .then((data) => {this.checkedNames= data})
+          
     },
     handleFileUpload(){
       this.photo = this.$refs.photo.files[0];
     },       
     toggleDropdown() {
     this.display = !this.display
-    }   
+    } 
   }
 };         
 
 </script>
 
-<style scoped>
+<style >
 body {
-  height:100vh;
-  margin-top:10px;
-  background: linear-gradient(to bottom, #1a725a, #327b83);  
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
 h1 {
-  color:white;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #426696;
+  font-weight: 600;
+  font-size: 3rem;
+  opacity: 0.8;
 }
-h2{
-  color:white;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+h2,
+p {
+  color: #658ec6;
+  font-weight: 500;
+  opacity: 0.8;
+}
+h3 {
+  color: #426696;
+  font-weight: 600;
+  opacity: 0.8;
+}
+.main {
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .profilecard{
-  height:100%;
-  width: 800px;
-  margin-left:auto;
-  margin-right:auto;  
-  background: linear-gradient(to bottom, #1a725a, #327b83);  
-  margin-top:111px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, .2),
-                0 10px 10px rgba(0, 0, 0, .2);
-  padding:30px;
-  display:flex;
-  justify-content:space-between        
+  min-height: 80vh;
+  background: linear-gradient(
+    to right bottom,
+   rgb(251 251 251 / 48%),
+    rgb(212 205 205 / 30%)
+  );
+  border-radius: 2rem;
+  z-index: 2;
+  backdrop-filter: blur(2rem);
+  display: flex;
+  margin-top:100px
 }
-
+.info{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+  border-radius: 2rem;
+}
 .avatar{
   margin-left:22px;
 }
-
+.viewinterest{
+  margin: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  border-radius: 2rem;
+  color: white;
+  padding: 1rem;
+  position: relative;
+}
 .Dropdown-Title {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: rgb(180, 177, 176);
@@ -179,16 +230,14 @@ h2{
   
 }
 .Dropdown-Item {
-  background-color: rgb(189, 189, 189);
+  background:linear-gradient( to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3) ) ; 
   padding: 5px 10px;
   margin-top: 1px;
   border-radius: 3px;
   list-style:none;
   background-color: #f1f1f1;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);    
-  font-family: 'Montserrat', sans-serif;
-
-  
+  font-family: 'Montserrat', sans-serif;  
 }
 .Dropdown-ItemList--closed {
   display: none;
@@ -196,19 +245,36 @@ h2{
 .Dropdown-Item:hover {
   background-color: rgb(161, 204, 195)
 }
-
-
+.circle1,
+.circle2 {
+  background: white;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.3)
+  );
+  height: 10rem;
+  width: 10rem;
+  position: absolute;
+  border-radius: 50%;
+}
+.circle1 {
+  top: 12%;
+  right: 27%;
+}
+.circle2 {
+  bottom: -1%;
+  left: 25%;
+}
 ul.interets{
   width: 173%;
   padding: 5px 10px;
   margin-top: -5px;
   border-radius: 3px;
   list-style: none;
-  margin-left:-8px
+  margin-left:-47px
 }
-
 ul >li{
-  background-color: darkcyan;
   padding: 5px 10px;
   margin-top: 1px;
   border-radius: 3px;
@@ -219,8 +285,7 @@ ul >li{
   font-weight: 500;
   display: block;
 }
-
-.dropbtn {
+.dropbtnInterest {
   background-color: #4da596de;
   border-radius:10px;
   color: white;
@@ -231,24 +296,48 @@ ul >li{
   border: none;
   cursor: pointer;
   outline:none;
-}
 
+}
 /* Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus {
   background-color: #0bc08a;
 }
-
 .interestDisplayed {
+  display: flex;
+  background: linear-gradient(
+    to left top,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.5)
+  );
+  border-radius: 1rem;
+  margin: 2rem 0rem;
+  padding: 2rem;
+  box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
+  justify-content: space-between;
+}
+.sbinteret {
+  border:none;
+  margin-left: 19px;
+  margin-top: 17px;
+
+}    
+.vue {
   display:flex;
   flex-direction: column;
-  top:-95px;
-  height:100%;
-  position:relative
+  align-items: center;
+  padding:10px
 }
-    
+
+#photo{
+  margin-left: 21px;
+}
+
+  @media screen and (max-width: 768px) { 
+    .profilecard{
+      display:flex;
+      flex-direction: column;
+    }
+  }
 </style>
 
 
-//recup l'element selectionné
-//le mettre dans component Interet
-// l'insert dans la BDD 

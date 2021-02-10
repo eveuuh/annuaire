@@ -3,6 +3,8 @@
 include("config.php");
 include ("header.php");
 
+// Je recherche un membre par son nom ou par son pseudo 
+// TODO recherche par centre d'interet
 $results = [];
 $rqt = "SELECT * FROM Adherents LEFT JOIN Profils ON Adherents.id = Profils.AdherentID WHERE pseudo LIKE :search OR nom LIKE :search OR prenom LIKE :search  LIMIT 2 OFFSET :offset " ;
     try {

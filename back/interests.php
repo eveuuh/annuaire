@@ -3,9 +3,11 @@
 include("config.php");
 include ("header.php");
 
-$result = [];
-$rqt = "SELECT nom,InteretId From Interets" ;
+//Permets de recuperer la liste d'interets contenus dans la BDD
 
+$result = [];
+$rqt = "SELECT nom,InteretId From Interets" ; // Requête pour recuperer le tableau 
+//execution de la requête
 try {
     $statement = $connexion->prepare($rqt);
     $statement->execute();
@@ -19,7 +21,7 @@ exit;
         "description": "'.$exception->getMessage().'";
     }');
 } 
-
+//affichage de la reponse sous forme de tableau
 $output = array (
     'InteretID' => $id,
     'nom' => $nom

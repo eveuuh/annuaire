@@ -115,7 +115,12 @@ export default {
     },
     submitInterest(){
         let formParams= new URLSearchParams();
-        formParams.append("checkedNames",JSON.stringify(this.checkedNames));
+        let test= JSON.stringify(this.checkedNames);
+        let resultTest =JSON.parse(test);
+        //let item = this.test.find((item) => item.InteretId == InteretId);
+        //console.log(resultTest[0].InteretId);
+       // console.log(resultTest);
+        formParams.append("resultTest",resultTest[0].InteretId);
         formParams.append("id",1);
           const requestOptions = {
             method: "POST",
@@ -125,9 +130,10 @@ export default {
         } 
         fetch('http://www.back.poney.local/memberInterest.php',requestOptions)     
             .then(response => response.json())
-            .then((data) => {this.checkedNames= data})
+            .then((data) => {this.resultTest= data})
           
-    },
+    }, // fetch un object json avec collection des interets
+    //result test = 1 enregistrement, si plusieurs cases cochées, 
     handleFileUpload(){
       this.photo = this.$refs.photo.files[0];
     },       

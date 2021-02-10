@@ -2,7 +2,7 @@
 
 include("config.php");
 include ("header.php");
-
+// Je recupere les membres 
 $result = [];
 $rqt = "SELECT * FROM Adherents LEFT JOIN Profils on Profils.AdherentID=Adherents.id " ;
 

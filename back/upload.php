@@ -3,6 +3,7 @@
 include("config.php");
 include ("header.php");
 
+// J'ajoute une photo au profil du membre
 $photo='';
 $userId= $_SESSION['id'];
 if(isset($_FILES['photo']['name']))

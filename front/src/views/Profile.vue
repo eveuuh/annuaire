@@ -1,7 +1,7 @@
 <template>
 
   <section>
-    <Nav></Nav>
+    <Nav class="test"></Nav>
     <div class="main">
       <div class="profilecard">
         <div class="info">
@@ -146,6 +146,10 @@ export default {
 </script>
 
 <style >
+
+.test{
+  z-index:99
+}
 body {
   font-family: "Poppins", sans-serif;
   min-height: 100vh;

@@ -1,6 +1,6 @@
 <template>
   <div id="membres">
-    <Nav></Nav>    
+    <Nav class="test"></Nav>    
     <div class="members">
       <h1>Voici les membres</h1>
         <div class="searching">
@@ -109,7 +109,9 @@ export default {
 
 </script>
 <style>
-
+.test{
+  z-index:99
+}
   #membres {
     font-family: Tahoma;
     font-size: 18px;

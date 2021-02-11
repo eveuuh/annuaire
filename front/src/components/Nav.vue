@@ -1,3 +1,4 @@
+
 <template>
   <div id="nav">
     <ul class="nav-links">
@@ -38,27 +39,18 @@ export default {
       burger.classList.toggle('toggle')
       // Animate navigation links
       navLinks.forEach((link, index) => {
-        if (link.style.animation || link.style.webkitAnimation) {
-          link.style.animation = ''
-          link.style.webkitAnimation = ''
-        } else {
-          link.style.webkitAnimation = `navLinkFade 0.5s ease forwards ${
-            index / 7}s`
-          link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7}s`
-        }
+          if (link.style.animation || link.style.webkitAnimation) {
+              link.style.animation = ''
+              link.style.webkitAnimation = ''
+          } else {
+              link.style.webkitAnimation = `navLinkFade 0.5s ease forwards ${
+              index / 7
+            }s`
+              link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7}s`
+          }
       })
     },
-    openDropdownNav() {
-      const dropdownLink = document.querySelectorAll('.nav-links')
-      dropdownLink.forEach((dropdown) => {
-        dropdown.addEventListener('mouseover', () => {
-          dropdown.children[1].style.display = 'block'
-        })
-        dropdown.addEventListener('mouseleave', () => {
-          dropdown.children[1].style.display = 'none'
-        })
-      })
-    },
+    
     myFunction() {
       document.getElementById("myDropdown").classList.toggle("show");
       window.onclick = function(event) {
@@ -82,7 +74,7 @@ export default {
             this.pseudo = null; 
             this.password = null; 
             this.connected = false; 
-  }
+    }
   }
 };
 </script>
@@ -151,52 +143,71 @@ export default {
     padding: 5px 15px;
     line-height: 50px;
   }
-  @media screen and (max-width: 768px) {
-   
-    ul.nav-links {
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      height: 100vh;
-      top: 8vh;
-      right: -90px;
-      padding: 100px;
-      align-items: center;
-      justify-content: flex-start;
-      transform: translateX(100%);
-      transition: transform 0.5s ease-in;
-      background-color: #0f0b0b6c;
-      
+  .dropbtn {
+    background-color: #4da596de;
+    border-radius:10px;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow:1px 1px rgb(143, 136, 136);
+    border: none;
+    cursor: pointer;
+    outline:none;
+  }
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #0bc08a;
+  }
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
 
+
+  /*responsive navbar */
+@media screen and (max-width: 768px) {   
+  ul.nav-links {
+    position: absolute;
+    flex-direction: column;
+    width: 100%;
+    height: 92vh;
+    top: 10vh;
+    right: 0;
+    padding: 50px;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #0d4447;
+    opacity: 0.8;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in; 
+    z-index:9 
     }
   
-    ul.nav-links li {
-      opacity: 0;
-    }
-    ul.nav-links a {
-      width: 100%;
-    }
-    div#burger {
-      display: block;
-    }
-    ul.dropdown-menu {
-      position: relative;
-      top: 0;
-    }
-    .dropbtn{
-      display:none;
-    }
-    .dp {
-      display:flex;
-    }
-   
-    
-    
+  ul.nav-links li {
+    opacity: 0;
   }
+  ul.nav-links a {
+    width: 100%;
+  }
+  div#burger {
+    display: block;
+  }
+  ul.dropdown-menu {
+    position: relative;
+    top: 0;
+  }
+  .dropbtn{
+    display:none;
+  }
+  .dp {
+    display:flex;
+  }
+
   .nav-active {
     transform: translateX(0) !important;
+    z-index:9 
   }
+
   @keyframes navLinkFade {
     from {
       opacity: 0;
@@ -216,29 +227,9 @@ export default {
   .toggle .line3 {
     transform: rotate(45deg) translate(-5px, -6px);
   }
-.dropbtn {
-  background-color: #4da596de;
-  border-radius:10px;
-  color: white;
-  padding: 10px;
-  font-size: 14px;
-  font-weight: bold;
-  box-shadow:1px 1px rgb(143, 136, 136);
-  border: none;
-  cursor: pointer;
-  outline:none;
-   z-index: 2;
+
 }
-/* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #0bc08a;
-}
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-/* Dropdown Content (Hidden by Default) */
+/* Dropdown Content */
 .dropdown-content {
   display: none;
   position: absolute;

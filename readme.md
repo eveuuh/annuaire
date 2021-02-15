@@ -52,8 +52,8 @@ La mise en place du projet s'est fait aprés le wireframe et maquettage de celui
 ## Membres:
     -[]si profil non rempli : grisé non cliquable, else consultable 
     -[]recherche par liste d'interets.
-## statistiques
-- [] Back + front 
+## Statistiques
+    -[] Back + front 
 
 
 ## Gestion du projet

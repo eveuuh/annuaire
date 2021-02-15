@@ -12,7 +12,7 @@
         </div>     
         <div class="vue">      
           <h2> Mes interets</h2>
-            <button @click="toggleDropdown" class="dropbtnInterest">Choisir un centre d'interêt</button>
+            <button @click="toggleDropdown" class="dropbtnInterest">Choisir un centre d'interêt</button> 
               <div v-if="display" class="Dropdown-ItemList">
                 <ul class="interets">   
                     <li  class="Dropdown-Item" type="checkbox"  v-for="(interest,id) in interests" :key="id"> 
@@ -30,7 +30,7 @@
          >
         {{checkedName}} 
         </Interet>
-    
+     
     </div>
 
       </div>
@@ -68,7 +68,8 @@ export default {
       ],
       display: false,
       interests:[],
-      checkedNames:[]
+      checkedNames:[],
+      getMembersInterest:""
       
     }
   }, 
@@ -85,7 +86,8 @@ export default {
           );
       fetch('http://www.back.poney.local/interests.php', {credentials:'include'})
        .then(response => response.json())
-       .then(data =>{this.interests=data})
+       .then(data =>{this.interests=data});
+
   },   
       
   methods:{
@@ -137,7 +139,7 @@ export default {
     handleFileUpload(){
       this.photo = this.$refs.photo.files[0];
     },       
-    toggleDropdown() {
+    toggleDropdown() { //
     this.display = !this.display
     } 
   }
